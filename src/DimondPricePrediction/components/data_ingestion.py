@@ -1,4 +1,5 @@
-
+import os
+import sys
 import pandas as pd
 import numpy as np
 from src.DimondPricePrediction.logger import logging
@@ -6,7 +7,7 @@ from src.DimondPricePrediction.exception import customexception
 
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
-from pathlib import path
+from pathlib import Path
 
 
 class DataIngestionConfig:
@@ -29,7 +30,7 @@ class DataIngestion:
             logging.info("I have read dataset as a df")
             
             
-            os.makedirs(os.path.join(self.ingestion_config.raw_data_path),exists=True)
+            os.makedirs(os.path.dirname(os.path.join(self.ingestion_config.raw_data_path)),exist_ok=True)
             data.to_csv(self.ingestion_config.raw_data_path,index=False)
             logging.info("I have saved the raw dataset in artifact folder")
             
