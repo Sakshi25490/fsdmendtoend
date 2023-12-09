@@ -107,7 +107,7 @@ class DataTransformation:
            logging.info("preprocessing pickle file saved")
             
             return(
-                triain_arr,
+                train_arr,
                 test_arr
             )
            
